@@ -63,7 +63,7 @@ def send_fact_as_email():
 
 if __name__ == "__main__":
     print("Running ...")
-    sched.every(120).seconds.do(send_fact_as_email)
+    sched.every(28800).seconds.do(send_fact_as_email)
     # sched.every().day.at("00:10:55").do(send_fact_as_email)
     
     while True:
