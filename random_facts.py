@@ -5,20 +5,23 @@ import email, smtplib, ssl, os
 from email.message import EmailMessage
 from datetime import datetime
 
+# Credentials
+sender = os.environ.get('EMAIL_SENDER') # sender email
+passwd = os.environ.get('APP_PASSWORD')
 
-# credentials
-# sender = r"jomfarlane@gmail.com"
-# passwd = r"pmywogbaafvuakat"
-sender = os.environ['EMAIL_SENDER']
-passwd = os.environ['pmywogbaafvuakat']
-receipients = ["inf_email@telegmail.com","mzvdyxpe@hi2.in"]
+# receipients
+receipients = [
+    "inf_email@telegmail.com",
+    "mzvdyxpe@hi2.in",
+    "james_cvzone@telegmail.com"
+    ]
 
+# server stuff
 host = "smtp.gmail.com"
 port = 465 #use 587 tls, 465 is for ssl?
 
 ##############################
-##############################
-
+print(type(sender))
 random_facts = [
     "Every journalist has a movel in him, which is an excellent place for it. - Ryssel Lynes",
     "Just because someone doesn't react, doesn't mean they didn't notice.",
@@ -50,57 +53,20 @@ def send_fact_as_email():
         now = datetime.now()
         timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
         return timestamp
-    
-    
-    
 
 
-    # exit()
-    
-    ###################
- 
-    # using context manager
+    # using a context manager
     with smtplib.SMTP_SSL(host, port, context=context) as smtp:
         smtp.login(sender, passwd)
         smtp.sendmail(sender, receipients, email.as_string())
         print(f"Fact sent! at {time_now()}")
     
- 
+
 if __name__ == "__main__":
     print("Running...")
-    sched.every(10).seconds.do(send_fact_as_email)
+    sched.every(120).seconds.do(send_fact_as_email)
     # sched.every().day.at("00:10:55").do(send_fact_as_email)
     
     while True:
         sched.run_pending()
         time.sleep(1)
-    
-
-
-
-
-
-"""
-def job():
-    print("doing job")
-    print("Reading time...\n")
-
-# time
-sched.every(5).seconds.do(job)
-sched.every(10).seconds.do(coding)
-sched.every().day.at("11:20:35").do(playing)
-
-
-while True:
-    sched.run_pending()
-    time.sleep(1)
-
-#count = 1
-#while count <= 6:
-    #print(random.choice(messages))
-    #count += 1
-
-
-#for message in messages:
-    #print(message)
-"""
