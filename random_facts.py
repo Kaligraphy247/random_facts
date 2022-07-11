@@ -21,7 +21,6 @@ host = "smtp.gmail.com"
 port = 465 #use 587 tls, 465 is for ssl?
 
 ##############################
-print(type(sender))
 random_facts = [
     "Every journalist has a movel in him, which is an excellent place for it. - Ryssel Lynes",
     "Just because someone doesn't react, doesn't mean they didn't notice.",
@@ -63,7 +62,7 @@ def send_fact_as_email():
     
 
 if __name__ == "__main__":
-    print("Running...")
+    print("Running ...")
     sched.every(120).seconds.do(send_fact_as_email)
     # sched.every().day.at("00:10:55").do(send_fact_as_email)
     
