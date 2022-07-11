@@ -7,9 +7,11 @@ from datetime import datetime
 
 
 # credentials
-sender = r"jomfarlane@gmail.com"
-passwd = r"pmywogbaafvuakat"
-receipients = ["inf_email@telegmail.com","ghostvansisher@telegmail.com"]
+# sender = r"jomfarlane@gmail.com"
+# passwd = r"pmywogbaafvuakat"
+sender = os.environ['EMAIL_SENDER']
+passwd = os.environ['pmywogbaafvuakat']
+receipients = ["inf_email@telegmail.com","mzvdyxpe@hi2.in"]
 
 host = "smtp.gmail.com"
 port = 465 #use 587 tls, 465 is for ssl?
@@ -66,7 +68,7 @@ def send_fact_as_email():
  
 if __name__ == "__main__":
     print("Running...")
-    sched.every(120).seconds.do(send_fact_as_email)
+    sched.every(10).seconds.do(send_fact_as_email)
     # sched.every().day.at("00:10:55").do(send_fact_as_email)
     
     while True:
