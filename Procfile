@@ -1,1 +1,1 @@
-worker: python my_random.py
+worker: python random_facts.py
