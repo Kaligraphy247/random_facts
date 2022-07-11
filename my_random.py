@@ -9,7 +9,7 @@ from datetime import datetime
 # credentials
 sender = r"jomfarlane@gmail.com"
 passwd = r"pmywogbaafvuakat"
-receipients = ["inf_email@telegmail.com","chikeziejames4@gmail.com"]
+receipients = ["inf_email@telegmail.com","ghostvansisher@telegmail.com"]
 
 host = "smtp.gmail.com"
 port = 465 #use 587 tls, 465 is for ssl?
@@ -25,7 +25,8 @@ random_facts = [
     "Nothing is impossible. Some things are just more likely than others. - Jonathan Winters",
     "A person that truly loves you will let you go, no matter how hard the situation is.",
     "A psychiatrist is a fellow who asks you a lot of expensive questions your wife asks for nothing. - Joey Adams",
-    "Girls who have high trust with their fathers also have tend to have high trust with their boyfriends."]
+    "Girls who have high trust with their fathers also have tend to have high trust with their boyfriends."
+    ]
 
 
 def select_random_fact(random_fact: list):
@@ -65,7 +66,7 @@ def send_fact_as_email():
  
 if __name__ == "__main__":
     print("Running...")
-    sched.every(10).seconds.do(send_fact_as_email)
+    sched.every(120).seconds.do(send_fact_as_email)
     # sched.every().day.at("00:10:55").do(send_fact_as_email)
     
     while True:
